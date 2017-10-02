@@ -1,17 +1,19 @@
+from __future__ import print_function
+
 import testtools
 
-import bashlint
+from bashlint import bashlint
 
 
 class TestCheckers(testtools.TestCase):
 
-    def _check_ok(self, checker, cases):
+    def _check_ok(self, checker, cases, **args):
         for case in cases:
-            self.assertIsNone(checker(case))
+            self.assertIsNone(checker(case, **args))
 
-    def _check_error(self, checker, cases):
+    def _check_error(self, checker, cases, **args):
         for case, offset in cases:
-            result = checker(case)
+            result = checker(case, **args)
             self.assertIsNotNone(result)
             self.assertEqual(result[0], offset, "\nTestcase: '%s'\n" % case)
 
@@ -62,3 +64,32 @@ class TestCheckers(testtools.TestCase):
             ("echo Test;  ", 9),
             ("echo Test; echo Test2;", 21),
         ])
+
+    def test_w204_ok(self):
+        self._check_ok(bashlint.checker_no_newline_on_last_line, [
+            "",
+        ], last_line=False)
+        self._check_ok(bashlint.checker_no_newline_on_last_line, [
+            "\n",
+        ], last_line=True)
+
+    def test_w204_error(self):
+        self._check_error(bashlint.checker_no_newline_on_last_line, [
+            ("", 0),
+        ], last_line=True)
+
+    def test_w205_ok(self):
+        self._check_ok(bashlint.checker_multiple_newlines_at_end_of_file, [
+            "",
+        ], last_line=False)
+        self._check_ok(bashlint.checker_multiple_newlines_at_end_of_file, [
+            "test\n",
+        ], last_line=True)
+
+    def test_w205_error(self):
+        self._check_error(bashlint.checker_multiple_newlines_at_end_of_file, [
+            ("", 0),
+        ], last_line=True)
+        self._check_error(bashlint.checker_multiple_newlines_at_end_of_file, [
+            ("\n", 0),
+        ], last_line=True)

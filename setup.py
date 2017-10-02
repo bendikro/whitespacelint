@@ -2,10 +2,12 @@ import codecs
 
 import setuptools
 
+from bashlint import __version__ as version
+
 
 setuptools.setup(
     name='bashlint',
-    version='0.1.0',
+    version=version,
     description='Bash linting tool',
     long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
     keywords='bash',
@@ -14,11 +16,12 @@ setuptools.setup(
     url='https://github.com/skudriashev/bashlint',
     download_url='https://github.com/skudriashev/bashlint/tarball/0.1.0',
     license='MIT',
-    py_modules=['bashlint'],
+    test_suite="tests",
+    packages=['bashlint'],
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            'bashlint = bashlint:main',
+            'bashlint = bashlint.bashlint:main',
         ],
     },
     classifiers=[
