@@ -8,6 +8,9 @@ build : ##Build package
 sdist : ##Create dist file
 	python setup.py sdist
 
+wheel : ##Create wheel file
+	python setup.py bdist_wheel --universal
+
 clean : ##Clean
 	$(RM) -r build/
 	$(RM) -r dist/

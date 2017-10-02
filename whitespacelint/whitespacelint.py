@@ -240,7 +240,7 @@ class Reporter(object):
 
 def parse_args():
     parser = argparse.ArgumentParser("Lint files for trailing characters")
-    parser.add_argument('-v', '--verbose', action="count",
+    parser.add_argument('-v', '--verbose', action="count", default=0,
                         help='increase output verbosity')
     parser.add_argument('--version', action="store_true", help='show version')
     parser.add_argument('-p', '--file-patterns', action="append",
