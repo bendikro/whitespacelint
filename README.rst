@@ -1,21 +1,19 @@
-============================
-bashlint - Bash linting tool
-============================
+==============================================
+whitespacelint - Linting tool for whitespace
+==============================================
 
-Simple Bash linting tool written in Python.
+Simple Linting tool for whitespace written in Python based on [bashlint](https://github.com/skudriashev/bashlint)
 
-.. image:: https://travis-ci.org/skudriashev/bashlint.svg?branch=master
-   :target: https://travis-ci.org/skudriashev/bashlint
 
 Installation
 ------------
-``bashlint`` can be installed via the Python Package Index or from source.
+``whitespacelint`` can be installed via the Python Package Index or from source.
 
-Using ``pip`` to install ``bashlint``::
+Using ``pip`` to install ``whitespacelint``::
 
-    $ pip install bashlint
+    $ pip install whitespacelint
 
-You can download the source tarball and install ``bashlint`` as follows::
+You can download the source tarball and install ``whitespacelint`` as follows::
 
     $ python setup.py install
 

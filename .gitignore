@@ -1,6 +1,5 @@
-.idea
 .tox
-.venv
-
 *.pyc
-
+/build
+/dist
+/whitespacelint.egg-info/

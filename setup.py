@@ -2,26 +2,24 @@ import codecs
 
 import setuptools
 
-from bashlint import __version__ as version
-
+from whitespacelint import __version__ as version
 
 setuptools.setup(
-    name='bashlint',
+    name='whitespacelint',
     version=version,
-    description='Bash linting tool',
+    description='Linting tool for whitespace',
     long_description=codecs.open('README.rst', 'r', 'utf-8').read(),
-    keywords='bash',
-    author='Stanislav Kudriashev',
-    author_email='stas.kudriashev@gmail.com',
-    url='https://github.com/skudriashev/bashlint',
-    download_url='https://github.com/skudriashev/bashlint/tarball/0.1.0',
+    keywords='lint',
+    author='Bendik',
+    author_email='bro.dev@gmail.com',
+    url='https://github.com/bendikro/whitespacelint',
     license='MIT',
     test_suite="tests",
-    packages=['bashlint'],
+    packages=['whitespacelint'],
     zip_safe=False,
     entry_points={
         'console_scripts': [
-            'bashlint = bashlint.bashlint:main',
+            'whitespacelint = whitespacelint.whitespacelint:main',
         ],
     },
     classifiers=[

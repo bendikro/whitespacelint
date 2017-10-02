@@ -278,7 +278,7 @@ def parse_args():
 def main():
     args = parse_args()
     if args.version:
-        from bashlint import __version__
+        from whitespacelint import __version__
         print("Version: %s" % __version__)
         sys.exit()
 

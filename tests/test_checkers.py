@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import testtools
 
-from bashlint import bashlint
+from whitespacelint import whitespacelint
 
 
 class TestCheckers(testtools.TestCase):
@@ -18,7 +18,7 @@ class TestCheckers(testtools.TestCase):
             self.assertEqual(result[0], offset, "\nTestcase: '%s'\n" % case)
 
     def test_w201_ok(self):
-        self._check_ok(bashlint.checker_trailing_whitespace, [
+        self._check_ok(whitespacelint.checker_trailing_whitespace, [
             "\n",
             "\r",
             "echo Test",
@@ -27,7 +27,7 @@ class TestCheckers(testtools.TestCase):
         ])
 
     def test_w201_error(self):
-        self._check_error(bashlint.checker_trailing_whitespace, [
+        self._check_error(whitespacelint.checker_trailing_whitespace, [
             ("\n ", 1),
             (" \n", 0),
             ("echo Test ", 9),
@@ -37,18 +37,18 @@ class TestCheckers(testtools.TestCase):
         ])
 
     def test_w202_ok(self):
-        self._check_ok(bashlint.checker_trailing_whitespace, [
+        self._check_ok(whitespacelint.checker_trailing_whitespace, [
             "",
         ])
 
     def test_w202_error(self):
-        self._check_error(bashlint.checker_trailing_whitespace, [
+        self._check_error(whitespacelint.checker_trailing_whitespace, [
             (" ", 0),
             ("    ", 0),
         ])
 
     def test_w203_ok(self):
-        self._check_ok(bashlint.checker_trailing_semicolon, [
+        self._check_ok(whitespacelint.checker_trailing_semicolon, [
             "",
             "echo Test",
             "echo Test; echo Test2",
@@ -57,7 +57,7 @@ class TestCheckers(testtools.TestCase):
         ])
 
     def test_w203_error(self):
-        self._check_error(bashlint.checker_trailing_semicolon, [
+        self._check_error(whitespacelint.checker_trailing_semicolon, [
             (";", 0),
             ("    ;", 4),
             ("echo Test;", 9),
@@ -66,30 +66,30 @@ class TestCheckers(testtools.TestCase):
         ])
 
     def test_w204_ok(self):
-        self._check_ok(bashlint.checker_no_newline_on_last_line, [
+        self._check_ok(whitespacelint.checker_no_newline_on_last_line, [
             "",
         ], last_line=False)
-        self._check_ok(bashlint.checker_no_newline_on_last_line, [
+        self._check_ok(whitespacelint.checker_no_newline_on_last_line, [
             "\n",
         ], last_line=True)
 
     def test_w204_error(self):
-        self._check_error(bashlint.checker_no_newline_on_last_line, [
+        self._check_error(whitespacelint.checker_no_newline_on_last_line, [
             ("", 0),
         ], last_line=True)
 
     def test_w205_ok(self):
-        self._check_ok(bashlint.checker_multiple_newlines_at_end_of_file, [
+        self._check_ok(whitespacelint.checker_multiple_newlines_at_end_of_file, [
             "",
         ], last_line=False)
-        self._check_ok(bashlint.checker_multiple_newlines_at_end_of_file, [
+        self._check_ok(whitespacelint.checker_multiple_newlines_at_end_of_file, [
             "test\n",
         ], last_line=True)
 
     def test_w205_error(self):
-        self._check_error(bashlint.checker_multiple_newlines_at_end_of_file, [
+        self._check_error(whitespacelint.checker_multiple_newlines_at_end_of_file, [
             ("", 0),
         ], last_line=True)
-        self._check_error(bashlint.checker_multiple_newlines_at_end_of_file, [
+        self._check_error(whitespacelint.checker_multiple_newlines_at_end_of_file, [
             ("\n", 0),
         ], last_line=True)
