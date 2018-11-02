@@ -152,6 +152,8 @@ class StyleGuide(object):
             for path in paths or ["."]:
                 if os.path.isdir(path):
                     self._check_dir(path)
+                elif os.path.isfile(path):
+                    self._check_file(path)
         except KeyboardInterrupt:
             print("... stopped")
 

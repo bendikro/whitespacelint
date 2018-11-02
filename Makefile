@@ -11,6 +11,9 @@ sdist : ##Create dist file
 wheel : ##Create wheel file
 	python setup.py bdist_wheel --universal
 
+upload-wheel : wheel ##Create wheel file
+	python setup.py bdist_wheel --universal upload
+
 clean : ##Clean
 	$(RM) -r build/
 	$(RM) -r dist/
