@@ -9,7 +9,7 @@ import re
 import sys
 
 REGEXP_SEMICOLON_OK = re.compile(r'(?:\s*;;\s*|\s+\\;\s*)$')
-REGEXP_SEMICOLON_WARN = re.compile('.*\s*;\s*$')
+REGEXP_SEMICOLON_WARN = re.compile(r'.*\s*;\s*$')
 
 W201 = "W201 Trailing whitespace"
 W202 = "W202 Blank line contains whitespace"
